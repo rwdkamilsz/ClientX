@@ -34,5 +34,10 @@ namespace ClientX
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ObservableCollection<Orders> Orders { get; set; }
+
+        public static implicit operator Customers(string v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
