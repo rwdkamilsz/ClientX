@@ -74,6 +74,7 @@ namespace ClientX
 
         private void Search(object sender, ExecutedRoutedEventArgs e)
         {
+            TextBox txtb = search_id as TextBox;
             string Search = search_id.Text;
             customerViewSource.View.MoveCurrentTo(context.Customers.Where(x => x.CustomerID.Contains(Search)).FirstOrDefault());
         }
@@ -279,14 +280,15 @@ namespace ClientX
             var cust = (from c in context.Customers
                         where c.CustomerID == cur.CustomerID
                         select c).FirstOrDefault();
-
-
-            if (ShowDeleteDialog() == System.Windows.Forms.DialogResult.Yes)
+            if(cust != null)
             {
-                if (ShowDeleteDialog("Are you willing to delete all orders associated with this customer?") == System.Windows.Forms.DialogResult.Yes)
-                {
 
-                    if (cust != null)
+            }
+
+            if (ShowDeleteDialog() == System.Windows.Forms.DialogResult.Yes 
+                && ShowDeleteDialog("Are you willing to delete all orders associated with this customer?") == System.Windows.Forms.DialogResult.Yes)
+            {
+              if (cust != null)
                     {
                         try
                         {
@@ -308,12 +310,7 @@ namespace ClientX
                     context.SaveChanges();
                     customerViewSource.View.Refresh();
                 }
-                else
-                {
-                    _ = ShowAbortMessage;
-                }
 
-            }
             else
             {
                 _ = ShowAbortMessage;
@@ -346,5 +343,6 @@ namespace ClientX
 
         }
 
+ 
     }
 }

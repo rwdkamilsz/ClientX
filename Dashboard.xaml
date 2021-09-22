@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ClientX"
       mc:Ignorable="d" 
-      d:DesignHeight="600" d:DesignWidth="1000" Background="gray"
+      d:DesignHeight="600" d:DesignWidth="1200" Background="#2e3137"
       Title="Dashboard" Loaded="Page_Loaded">
 
     <Page.Resources>
@@ -25,11 +25,11 @@
         <Style x:Key="Label" TargetType="{x:Type Label}" BasedOn="{x:Null}">
             <Setter Property="HorizontalAlignment" Value="Left"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="Margin" Value="3"/>
+            <Setter Property="Margin" Value="10"/>
             <Setter Property="Height" Value="23"/>
         </Style>
 
-       
+
         <Style TargetType="{x:Type DataGridRow}">
             <Setter Property="VerticalContentAlignment" Value="Center" />
             <Setter Property="BorderThickness" Value="0"/>
@@ -56,23 +56,24 @@
             <Setter Property="BorderThickness" Value="0" />
             <Setter Property="Background" Value="#2e3137" />
             <Setter Property="Foreground" Value="white" />
-            
+
         </Style>
         <Style x:Key="CustTextBox" TargetType="{x:Type TextBox}" BasedOn="{x:Null}">
             <Setter Property="HorizontalAlignment" Value="Right"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="Margin" Value="3"/>
+            <Setter Property="Margin" Value="10"/>
             <Setter Property="Height" Value="26"/>
-            <Setter Property="Width" Value="120"/>
+
+            <Setter Property="MinWidth" Value="180"/>
+            <Setter Property="HorizontalAlignment" Value="right"/>
         </Style>
         <Style x:Key="NavButton" TargetType="{x:Type Button}" BasedOn="{x:Null}">
-            <Setter Property="FontSize" Value="24"/>
-            <Setter Property="Margin" Value="4,4,4,4"/>
-            <Setter Property="Width" Value="auto"/>
-            <Setter Property="Height" Value="auto"/>
             <Setter Property="FontFamily" Value="Segoe UI Symbol"/>
-            <Setter Property="Margin" Value="2,2,2,0"/>
-            <Setter Property="Width" Value="40"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Margin" Value="4,4,4,4"/>
+
+            <Setter Property="Padding" Value="4,4,4,4"/>
+            <Setter Property="Width" Value="auto"/>
             <Setter Property="Height" Value="auto"/>
         </Style>
 
@@ -90,7 +91,6 @@
         <CommandBinding Command="{StaticResource AddCommand}" Executed="AddCommandHandler"/>
         <CommandBinding Command="{StaticResource CancelCommand}" Executed="CancelCommandHandler"/>
         <CommandBinding Command="{StaticResource MoveCommand}" Executed="Search"/>
-        <CommandBinding Command="{StaticResource MoveCommand}" Executed="Search"/>
     </Page.CommandBindings>
 
     <Grid DataContext="{StaticResource customersOrdersViewSource}">
@@ -99,24 +99,24 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal" Margin="2,2,2,2" Height="40" VerticalAlignment="Top" Background="SteelBlue" DataContext="{StaticResource customersViewSource}" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin">
+        <StackPanel Orientation="Horizontal" Height="40" VerticalAlignment="Top" Background="#545d6a" DataContext="{StaticResource customersViewSource}">
             <Button Name="btnFirst" Content="|◄" Command="{StaticResource FirstCommand}" Style="{StaticResource NavButton}"/>
             <Button Name="btnPrev" Content="◄" Command="{StaticResource PreviousCommand}" Style="{StaticResource NavButton}"/>
             <Button Name="btnNext" Content="►" Command="{StaticResource NextCommand}" Style="{StaticResource NavButton}"/>
             <Button Name="btnLast" Content="►|" Command="{StaticResource LastCommand}" Style="{StaticResource NavButton}"/>
-            <Button Name="btnDelete" Content="Delete C " Command="{StaticResource DeleteCustomerCommand}" FontSize="11" Width="120" Style="{StaticResource NavButton}"/>
-            <Button Name="btnAdd" Content="New C " Command="{StaticResource AddCommand}" FontSize="11" Width="80" Style="{StaticResource NavButton}"/>
-            <Button Content="New Order" Name="btnNewOrder" FontSize="11" Width="80" Style="{StaticResource NavButton}" Click="NewOrder_click"/>
-            <Button Name="btnUpdate" Content="Commit" Command="{StaticResource UpdateCommand}" FontSize="11" Width="80" Style="{StaticResource NavButton}"/>
-
+            <Button Name="btnDelete" Content="Delete Client " Command="{StaticResource DeleteCustomerCommand}" FontSize="11"  Style="{StaticResource NavButton}"/>
+            <Button Name="btnAdd" Content="New Client " Command="{StaticResource AddCommand}" FontSize="11" Width="auto" Style="{StaticResource NavButton}"/>
+            <Button Content="New Order" Name="btnNewOrder" FontSize="11" Width="auto"  Style="{StaticResource NavButton}" Click="NewOrder_click"/>
+            <Button Name="btnCancel" Content="Cancel" Command="{StaticResource CancelCommand}" FontSize="11"  Style="{StaticResource NavButton}"/>
+            <Button Name="btnUpdate" Content="Commit" Command="{StaticResource UpdateCommand}" FontSize="11"  Style="{StaticResource NavButton}"/>
             <TextBox x:Name="search_id" Grid.Column="1" Grid.Row="3" Style="{StaticResource CustTextBox}" Margin="40,0,0,0"
                   Text="{Binding Mode=OneWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
-            <Button Content="Search for ID" Name="btnMove" Command="{StaticResource MoveCommand}" FontSize="11" Width="80" Style="{StaticResource NavButton}"/>
+            <Button Content="Search for ID" Name="btnMove" Command="{StaticResource MoveCommand}" FontSize="11" Style="{StaticResource NavButton}"/>
         </StackPanel>
-        <Grid x:Name="existingCustomerGrid"  Grid.Row="1" HorizontalAlignment="Left" Margin="5" Visibility="Visible" VerticalAlignment="Top" Background="AntiqueWhite" DataContext="{StaticResource customersViewSource}">
+        <Grid x:Name="existingCustomerGrid"  Grid.Row="1"  Margin="5,5,5,0" Visibility="Visible" VerticalAlignment="Top" Background="#CEDBF5" DataContext="{StaticResource customersViewSource}" Height="240">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" MinWidth="233"/>
-                <ColumnDefinition Width="Auto" MinWidth="397"/>
+                <ColumnDefinition Width="Auto" MinWidth="390"/>
+                <ColumnDefinition Width="Auto" MinWidth="380"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
@@ -126,42 +126,43 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Label Content="Customer ID:" Grid.Row="0" Style="{StaticResource Label}"/>
+            <Label Content="Customer details" FontWeight="Bold"/>
+            <Label Content="Customer ID:" Grid.Row="0" Style="{StaticResource Label}" Height="24"  Width="79" Margin="10,20,0,11"/>
             <TextBox x:Name="customerIDTextBox" Grid.Row="0" Style="{StaticResource CustTextBox}"
-                  Text="{Binding CustomerID, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
-            <Label Content="Company Name:" Grid.Row="1" Style="{StaticResource Label}"/>
+                  Text="{Binding CustomerID, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  Width="180" Margin="0,10,10,10"/>
+            <Label Content="Company Name:" Grid.Row="1" Style="{StaticResource Label}" Height="24"  Width="98" Margin="10,11,0,11"/>
             <TextBox x:Name="companyNameTextBox" Grid.Row="1" Style="{StaticResource CustTextBox}"
-                  Text="{Binding CompanyName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
-            <Label Content="Contact Name:" Grid.Row="2" Style="{StaticResource Label}"/>
+                  Text="{Binding CompanyName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  Width="180" Margin="0,10,10,10"/>
+            <Label Content="Contact Name:" Grid.Row="2" Style="{StaticResource Label}" Height="24"  Width="89" Margin="10,11,0,11"/>
             <TextBox x:Name="contactNameTextBox" Grid.Row="2" Style="{StaticResource CustTextBox}"
-                  Text="{Binding ContactName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
-            <Label Content="Contact title:" Grid.Row="3" Style="{StaticResource Label}"/>
+                  Text="{Binding ContactName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  Width="180" Margin="0,10,10,10"/>
+            <Label Content="Contact title:" Grid.Row="3" Style="{StaticResource Label}" Height="24"  Width="77" Margin="10,11,0,11"/>
             <TextBox x:Name="contactTitleTextBox" Grid.Row="3" Style="{StaticResource CustTextBox}"
-                  Text="{Binding ContactTitle, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
-            <Label Content="Address:" Grid.Row="4" Style="{StaticResource Label}"/>
+                  Text="{Binding ContactTitle, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  Width="180" Margin="0,10,10,10"/>
+            <Label Content="Address:" Grid.Row="4" Style="{StaticResource Label}" Height="24"  Width="55" Margin="10,11,0,11"/>
             <TextBox x:Name="addressTextBox" Grid.Row="4" Style="{StaticResource CustTextBox}"
-                  Text="{Binding Address, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
-            <Label Content="City:" Grid.Column="1" Grid.Row="0" Style="{StaticResource Label}"/>
+                  Text="{Binding Address, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  Width="180" Margin="0,10,10,10"/>
+            <Label Content="City:" Grid.Column="1" Grid.Row="0" Style="{StaticResource Label}" Height="24"  Width="33" Margin="10,11,0,11"/>
             <TextBox x:Name="cityTextBox" Grid.Column="1" Grid.Row="0" Style="{StaticResource CustTextBox}"
-                  Text="{Binding City, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
-            <Label Content="Country:" Grid.Column="1" Grid.Row="1" Style="{StaticResource Label}"/>
+                  Text="{Binding City, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  Width="180" Margin="0,10,10,10"/>
+            <Label Content="Country:" Grid.Column="1" Grid.Row="1" Style="{StaticResource Label}" Height="24"  Width="55" Margin="10,11,0,11"/>
             <TextBox x:Name="countryTextBox" Grid.Column="1" Grid.Row="1" Style="{StaticResource CustTextBox}"
-                  Text="{Binding Country, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                  Text="{Binding Country, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  Width="180" Margin="0,10,10,10"/>
 
-            <Label Content="Phone:" Grid.Column="1" Grid.Row="2" Style="{StaticResource Label}"/>
+            <Label Content="Phone:" Grid.Column="1" Grid.Row="2" Style="{StaticResource Label}" Height="24"  Width="46" Margin="10,11,0,11"/>
             <TextBox x:Name="phoneTextBox" Grid.Column="1" Grid.Row="2" Style="{StaticResource CustTextBox}"
-                  Text="{Binding Phone, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
-            <Label Content="Postal Code:" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" Style="{StaticResource Label}"/>
+                  Text="{Binding Phone, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  Width="180" Margin="0,10,10,10"/>
+            <Label Content="Postal Code:" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" Style="{StaticResource Label}" Height="24"  Width="75" Margin="10,11,0,11"/>
             <TextBox x:Name="postalCodeTextBox" Grid.Column="1" Grid.Row="3" Style="{StaticResource CustTextBox}"
-                  Text="{Binding PostalCode, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
-            <Label Content="Region:" Grid.Column="1" Grid.Row="4" Style="{StaticResource Label}"/>
+                  Text="{Binding PostalCode, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  Width="180" Margin="0,10,10,10"/>
+            <Label Content="Region:" Grid.Column="1" Grid.Row="4" Style="{StaticResource Label}" Height="24"  Width="49" Margin="10,11,0,11"/>
             <TextBox x:Name="regionTextBox" Grid.Column="1" Grid.Row="4" Style="{StaticResource CustTextBox}"
-                  Text="{Binding Region, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                  Text="{Binding Region, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  Width="180" Margin="0,10,10,10"/>
         </Grid>
-        <Grid x:Name="newCustomerGrid" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5" Visibility="Collapsed" Background="CornflowerBlue">
+        <Grid x:Name="newCustomerGrid" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,5,0,0" Visibility="Hidden" Background="#BCC7E0" Height="230" Width="990">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" MinWidth="233"/>
-                <ColumnDefinition Width="Auto" MinWidth="397"/>
+                <ColumnDefinition Width="Auto" MinWidth="450"/>
+                <ColumnDefinition Width="Auto" MinWidth="450"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
@@ -171,42 +172,43 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Label Content="Customer ID:" Grid.Row="0" Style="{StaticResource Label}"/>
+
+            <Label Content="Add new customer" FontWeight="Bold"/>
+            <Label Content="Customer ID:" Grid.Row="0" Style="{StaticResource Label}"   />
             <TextBox x:Name="add_customerIDTextBox" Grid.Row="0" Style="{StaticResource CustTextBox}"
                   Text="{Binding CustomerID, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
-            <Label Content="Company Name:" Grid.Row="1" Style="{StaticResource Label}"/>
+            <Label Content="Company Name:" Grid.Row="1" Style="{StaticResource Label}" />
             <TextBox x:Name="add_companyNameTextBox" Grid.Row="1" Style="{StaticResource CustTextBox}"
-                  Text="{Binding CompanyName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true }"/>
-            <Label Content="Contact Name:" Grid.Row="2" Style="{StaticResource Label}"/>
+                  Text="{Binding CompanyName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true }" />
+            <Label Content="Contact Name:" Grid.Row="2" Style="{StaticResource Label}"  />
             <TextBox x:Name="add_contactNameTextBox" Grid.Row="2" Style="{StaticResource CustTextBox}"
-                  Text="{Binding ContactName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
-            <Label Content="Contact title:" Grid.Row="3" Style="{StaticResource Label}"/>
+                  Text="{Binding ContactName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
+            <Label Content="Contact title:" Grid.Row="3" Style="{StaticResource Label}"   />
             <TextBox x:Name="add_contactTitleTextBox" Grid.Row="3" Style="{StaticResource CustTextBox}"
-                  Text="{Binding ContactTitle, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
-            <Label Content="Address:" Grid.Row="4" Style="{StaticResource Label}"/>
+                  Text="{Binding ContactTitle, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
+            <Label Content="Address:" Grid.Row="4" Style="{StaticResource Label}"  />
             <TextBox x:Name="add_addressTextBox" Grid.Row="4" Style="{StaticResource CustTextBox}"
-                  Text="{Binding Address, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
-            <Label Content="City:" Grid.Column="1" Grid.Row="0" Style="{StaticResource Label}"/>
+                  Text="{Binding Address, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
+            <Label Content="City:" Grid.Column="1" Grid.Row="0" Style="{StaticResource Label}"   />
             <TextBox x:Name="add_cityTextBox" Grid.Column="1" Grid.Row="0" Style="{StaticResource CustTextBox}"
                   Text="{Binding City, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
-            <Label Content="Country:" Grid.Column="1" Grid.Row="1" Style="{StaticResource Label}"/>
+            <Label Content="Country:" Grid.Column="1" Grid.Row="1" Style="{StaticResource Label}" />
             <TextBox x:Name="add_countryTextBox" Grid.Column="1" Grid.Row="1" Style="{StaticResource CustTextBox}"
-                  Text="{Binding Country, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                  Text="{Binding Country, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
 
-            <Label Content="Phone:" Grid.Column="1" Grid.Row="3" Style="{StaticResource Label}"/>
-            <TextBox x:Name="add_phoneTextBox" Grid.Column="1" Grid.Row="3" Style="{StaticResource CustTextBox}"
+            <Label Content="Phone:" Grid.Column="1" Grid.Row="2" Style="{StaticResource Label}" />
+            <TextBox x:Name="add_phoneTextBox" Grid.Column="1" Grid.Row="2" Style="{StaticResource CustTextBox}"
                   Text="{Binding Phone, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
-            <Label Content="Postal Code:" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" Style="{StaticResource Label}"/>
-            <TextBox x:Name="add_postalCodeTextBox" Grid.Column="1" Grid.Row="4" Style="{StaticResource CustTextBox}"
+            <Label Content="Postal Code:" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" Style="{StaticResource Label}" />
+            <TextBox x:Name="add_postalCodeTextBox" Grid.Column="1" Grid.Row="3" Style="{StaticResource CustTextBox}"
                   Text="{Binding PostalCode, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
-            <Label Content="Region:" Grid.Column="1" Grid.Row="5" Style="{StaticResource Label}"/>
-            <TextBox x:Name="add_regionTextBox" Grid.Column="1" Grid.Row="5" Style="{StaticResource CustTextBox}"
+            <Label Content="Region:" Grid.Column="1" Grid.Row="4" Style="{StaticResource Label}"/>
+            <TextBox x:Name="add_regionTextBox" Grid.Column="1" Grid.Row="4" Style="{StaticResource CustTextBox}"
                   Text="{Binding Region, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
         </Grid>
-        <Grid x:Name="newOrderGrid" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5" DataContext="{Binding Path=newOrder, Mode=TwoWay}" Visibility="Collapsed" Background="LightGreen">
+        <Grid x:Name="newOrderGrid" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,5,0,0" DataContext="{Binding Path=newOrder, Mode=TwoWay}" Visibility="Collapsed" Background="#A3ADC2" Height="230" Width="Auto">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" MinWidth="233"/>
-                <ColumnDefinition Width="Auto" MinWidth="397"/>
+                <ColumnDefinition Width="Auto" MinWidth="330"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
@@ -222,7 +224,7 @@
             <TextBox x:Name="add_employeeIDTextBox" Grid.Row="1" Style="{StaticResource CustTextBox}"
                   Text="{Binding EmployeeID, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
             <Label Content="Order Date:"  Grid.Row="2" Style="{StaticResource Label}"/>
-            <DatePicker x:Name="add_orderDatePicker" Grid.Row="2"  HorizontalAlignment="Right" Width="120"
+            <DatePicker x:Name="add_orderDatePicker" Grid.Row="2"  HorizontalAlignment="Right" VerticalAlignment="Center" Width="190"
                  SelectedDate="{Binding OrderDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true, UpdateSourceTrigger=PropertyChanged}"/>
 
             <Label Content="Ship Via:"  Grid.Row="5" Style="{StaticResource Label}"/>
@@ -232,7 +234,7 @@
             <TextBox x:Name="add_freightTextBox" Grid.Row="6" Style="{StaticResource CustTextBox}"
                   Text="{Binding Freight, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
         </Grid>
-        <DataGrid x:Name="ordersDataGrid" IsSynchronizedWithCurrentItem="True" SelectionUnit="Cell" SelectionMode="Single" AutoGenerateColumns="False" CanUserDeleteRows="True" CanUserAddRows="False" IsEnabled="True" EnableRowVirtualization="True" Width="auto" ItemsSource="{Binding Source={StaticResource customersOrdersViewSource}}" Margin="10,10,10,10" Grid.Row="2" RowDetailsVisibilityMode="VisibleWhenSelected">
+        <DataGrid x:Name="ordersDataGrid" IsSynchronizedWithCurrentItem="True" SelectionUnit="Cell" SelectionMode="Single"  AutoGenerateColumns="False" CanUserDeleteRows="True" CanUserAddRows="False" IsEnabled="True" EnableRowVirtualization="True" Height="Auto" Width="Auto" ItemsSource="{Binding Source={StaticResource customersOrdersViewSource}}" Margin="0,10,0,0" Grid.Row="2" Background="#2e3137" RowDetailsVisibilityMode="VisibleWhenSelected">
             <DataGrid.Columns>
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
