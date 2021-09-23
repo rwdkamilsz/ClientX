@@ -1,0 +1,23 @@
+digraph "ClientX.LoginWindow"
+{
+ // INTERACTIVE_SVG=YES
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="ClientX.LoginWindow",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Logika interakcji dla klasy LoginWindow.xaml"];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="Window",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_window.html",tooltip=" "];
+  Node3 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="System::Windows::Window",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_system_1_1_windows_1_1_window.html",tooltip=" "];
+  Node4 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="System::Windows::Markup\l::IComponentConnector",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_system_1_1_windows_1_1_markup_1_1_i_component_connector.html",tooltip=" "];
+  Node3 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" user\nuserPassword" ,fontname="Helvetica"];
+  Node5 [label="readonly string",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node6 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" LoginInput\nPasswordInput\nbtnSubmit" ,fontname="Helvetica"];
+  Node6 [label="System",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node7 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" _contentLoaded" ,fontname="Helvetica"];
+  Node7 [label="bool",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+}

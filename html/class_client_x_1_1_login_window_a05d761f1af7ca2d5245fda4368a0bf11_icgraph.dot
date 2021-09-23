@@ -1,0 +1,11 @@
+digraph "ClientX.LoginWindow.tryLogin"
+{
+ // INTERACTIVE_SVG=YES
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="ClientX.LoginWindow.tryLogin",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Funkcja sprawdza czy oba pola logowania są wypełnione i zwraca komunikat do użytkownika,..."];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="ClientX.LoginWindow.Connect",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_client_x_1_1_login_window.html#a56e07d67f26b1c9c7eef39ea31313946",tooltip=" "];
+}

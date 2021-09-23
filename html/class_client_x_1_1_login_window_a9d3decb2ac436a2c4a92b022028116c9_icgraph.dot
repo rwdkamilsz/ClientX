@@ -1,0 +1,15 @@
+digraph "ClientX.LoginWindow.checkCredentials"
+{
+ // INTERACTIVE_SVG=YES
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="ClientX.LoginWindow.check\lCredentials",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Walidacja poprawności danych logowania"];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="ClientXTestes.LoginWindow\lTests.TestLoginValidation",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_client_x_testes_1_1_login_window_tests.html#ab19d20760b377d65dd103955780bb1d8",tooltip=" "];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="ClientX.LoginWindow.tryLogin",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_client_x_1_1_login_window.html#a05d761f1af7ca2d5245fda4368a0bf11",tooltip="Funkcja sprawdza czy oba pola logowania są wypełnione i zwraca komunikat do użytkownika,..."];
+  Node3 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="ClientX.LoginWindow.Connect",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_client_x_1_1_login_window.html#a56e07d67f26b1c9c7eef39ea31313946",tooltip=" "];
+}

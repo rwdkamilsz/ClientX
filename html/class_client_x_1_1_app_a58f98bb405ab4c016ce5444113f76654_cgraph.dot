@@ -1,0 +1,11 @@
+digraph "ClientX.App.Main"
+{
+ // INTERACTIVE_SVG=YES
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="ClientX.App.Main",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Application Entry Point."];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="ClientX.App.InitializeComponent",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_client_x_1_1_app.html#a4163aae5e157728e4f6ebd3c27b2e44c",tooltip="InitializeComponent"];
+}

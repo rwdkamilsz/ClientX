@@ -1,0 +1,16 @@
+digraph "ClientX.Dashboard.ShowDeleteDialog"
+{
+ // INTERACTIVE_SVG=YES
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="ClientX.Dashboard.ShowDelete\lDialog",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Funkcja pomocnicza, pokazująca monit użytkownikowi z możliwością potwierdzenia lub anulowania operacj..."];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="ClientX.Dashboard.Delete\l_Order",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_client_x_1_1_dashboard.html#ae3efa262f557bc22f8047517dd4b66c3",tooltip="Metoda, która odpowiada za usuwanie zamówień z bazy. Wywoływana jest przy usuwaniu pojedynczego zamów..."];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="ClientX.Dashboard.Delete\lCustomerCommandHandler",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_client_x_1_1_dashboard.html#a96893a73f9596b47424063fc8b1d01c3",tooltip="Metoda odpowiadająca za usunięcie użytkownik z bazy oraz usunięcie wszystkich jego zamówień."];
+  Node2 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="ClientX.Dashboard.Delete\lOrderCommandHandler",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_client_x_1_1_dashboard.html#a6aa18a5634c126a0c14e085441ee843d",tooltip="Metoda, przypisana do kontrolki, która wywołuję funkcję usuwająca zamówienia z bazy."];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

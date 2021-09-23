@@ -116,7 +116,7 @@ namespace ClientX
         /// </code> Znalazienie rekordu o odpowiadającym CustomerID
         private void Search(object sender, ExecutedRoutedEventArgs e)
         {
-            TextBox txtb = search_id as TextBox;
+            TextBox txtb = (TextBox)search_id;
             string Search = search_id.Text;
             customerViewSource.View.MoveCurrentTo(context.Customers.Where(x => x.CustomerID.Contains(Search)).FirstOrDefault());
         }
@@ -128,12 +128,17 @@ namespace ClientX
         /// <returns>
         /// Funkcja zwraca liczbę dziesiętną, zwalidowaną i przekonwertowaną z typu string
         /// </returns> 
-        private decimal? ValidateFreight(string freight)
+        public decimal? ValidateFreight(string freight)
         {
-            decimal validatedFreight = 0;
-            if (freight.Length > 0)
+            decimal validatedFreight;
+            decimal freightNew = Convert.ToDecimal(freight);
+            if (freightNew > 1)
             {
-                validatedFreight = Convert.ToDecimal(freight);
+                validatedFreight = freightNew;
+            }
+            else
+            {
+                validatedFreight = 1001;
             }
 
             return validatedFreight;
@@ -408,8 +413,12 @@ namespace ClientX
             add_postalCodeTextBox.Text = "";
             add_regionTextBox.Text = "";
 
-            existingCustomerGrid.Visibility = Visibility.Visible;
+            newOrderGrid.Visibility = Visibility.Collapsed;
             newCustomerGrid.Visibility = Visibility.Collapsed;
+
+            existingCustomerGrid.Visibility = Visibility.Visible;
+
+       
         }
 
         /// <summary>
