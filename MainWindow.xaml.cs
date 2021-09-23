@@ -8,27 +8,39 @@ namespace ClientX
     /// </summary>
     public partial class MainWindow : Window
     {
+        /// <summary>
+        /// Przypisanie i inicjalizacja strony Dashboard
+        /// </summary>
         public Dashboard dp = new Dashboard();
-#pragma warning disable CS0246 // Nie można znaleźć nazwy typu lub przestrzeni nazw „ClientList” (brak dyrektywy using lub odwołania do zestawu?)
 
-#pragma warning restore CS0246 // Nie można znaleźć nazwy typu lub przestrzeni nazw „ClientList” (brak dyrektywy using lub odwołania do zestawu?)
-
-#pragma warning disable CS0246 // Nie można znaleźć nazwy typu lub przestrzeni nazw „ClientList” (brak dyrektywy using lub odwołania do zestawu?)
-
-#pragma warning restore CS0246 // Nie można znaleźć nazwy typu lub przestrzeni nazw „ClientList” (brak dyrektywy using lub odwołania do zestawu?)
-
+        /// <summary>
+        /// Zmienna pomocnicza do sprawdzenia czy strona Dashboard zotała wcześniej zainicjalizowana
+        /// </summary>
         public Dashboard dpNew;
 
+        /// <summary>
+        /// Inicjalizacja głównego okna aplikacji
+        /// </summary>
         public MainWindow()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Funkcja wywoływana po załadowaniu okna, która przypisuje strone Dashboard do zawartości Frame.
+        /// </summary>
+        /// <param name="sender">Parametr sender zawiera odniesienie do kontrolki/obiektu, który wywołał zdarzenie</param>
+        /// <param name="e">Routed Event wskazuje na zdarzenie, które jest kierowane</param>
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Dashboard dp = new Dashboard();
             MainFrame.Content = this.dp;
         }
+
+        /// <summary>
+        /// Funkcja odpowiadająca za sprawdzenie, czy wcześniej strona Dashboard została zainicjalizowana oraz za załadowanie tej strony do główneg Frame aplikacji.
+        /// </summary>
+        /// <param name="sender">Parametr sender zawiera odniesienie do kontrolki/obiektu, który wywołał zdarzenie</param>
+        /// <param name="e">Routed Event wskazuje na zdarzenie, które jest kierowane</param>
         private void showDashboardHandler(object sender, RoutedEventArgs e)
         {
             if (dp != null)
@@ -49,6 +61,11 @@ namespace ClientX
             }
         }
 
+        /// <summary>
+        /// Metoda odpowiadająca za zamknięcie okna aplikacji.
+        /// </summary>
+        /// <param name="sender">Parametr sender zawiera odniesienie do kontrolki/obiektu, który wywołał zdarzenie</param>
+        /// <param name="e">Routed Event wskazuje na zdarzenie, które jest kierowane</param>
         private void exitAppHandler(object sender, RoutedEventArgs e)
         {
             Close();
